@@ -22,12 +22,12 @@ class Game extends React.Component {
     return this.state.xIsNext ? 'X' : 'O';
   }
 
-  current() {
-    return this.state.history[this.state.stepNumber];
+  currentSquares() {
+    return this.state.history[this.state.stepNumber].squares;
   }
 
   handleClick(i) {
-    const squares = this.current().squares.slice();
+    const squares = this.currentSquares().slice();
     if (this.calculateWinner(squares) || squares[i]) {
         return;
     }
@@ -43,7 +43,7 @@ class Game extends React.Component {
   }
 
   calculateWinner() {
-    const squares = this.current().squares;
+    const squares = this.currentSquares();
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -75,7 +75,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
-          <Board squares={this.current().squares} onClick={(i) => this.handleClick(i)} />
+          <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
         </div>
         <div className="game-info">
           <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />
