@@ -67,7 +67,7 @@ class Game extends React.Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return {player: squares[a], line: lines[i]};
       }
     }
     return null;
@@ -94,16 +94,25 @@ class Game extends React.Component {
     const history = this.state.history;
     const lastSquares = history[history.length - 1].squares;
     const winner = this.calculateWinner(lastSquares);
+    const winnerPlayer = winner ? winner.player : null;
+    let winnerLine = null;
+    // only show winner line when last move is selected in history
+    if (winner && this.state.stepNumber === history.length - 1 ) {
+      winnerLine = winner.line;
+    }
+
     return (
       <div className="game">
         <div className="game-board">
-          <Status winner={winner} nextPlayer={this.state.nextPlayer} />
-          <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
+          <Status winner={winnerPlayer} nextPlayer={this.state.nextPlayer} />
+          <Board winnerLine={winnerLine}
+                 squares={this.currentSquares()}
+                 onClick={(i) => this.handleClick(i)} />
           <ResetButton onReset={() => this.resetGame()} />
         </div>
         <div className="game-info">
           <MoveList history={this.state.history}
-                    winner={winner}
+                    winner={winnerPlayer}
                     onClick={(move) => this.jumpTo(move)}
                     stepNumber={this.state.stepNumber} />
         </div>

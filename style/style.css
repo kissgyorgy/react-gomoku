@@ -56,3 +56,7 @@ ol, ul {
 .red {
   color: red;
 }
+
+.winner {
+  background-color: grey;
+}
