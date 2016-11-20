@@ -3,9 +3,20 @@ import React from 'react';
 
 function Status(props) {
   if (props.winner) {
-    return <div>Winner: {props.winner}</div>;
+    return (
+      <div>
+        Winner: <span className={props.nextPlayer.color}>{props.winner}</span>
+      </div>
+    );
   } else {
-    return <div>Next player: {props.nextPlayer}</div>;
+    return (
+      <div>
+        Next player:&nbsp;
+        <span className={props.nextPlayer.color}>
+          {props.nextPlayer.sign}
+        </span>
+      </div>
+    );
   }
 }
 

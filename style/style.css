@@ -48,3 +48,11 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

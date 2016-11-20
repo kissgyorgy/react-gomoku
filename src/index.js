@@ -20,7 +20,11 @@ class Game extends React.Component {
   }
 
   nextPlayer() {
-    return this.state.xIsNext ? 'X' : 'O';
+    if (this.state.xIsNext){
+      return {sign: 'X', color: 'green'}
+    } else {
+      return {sign: 'O', color: 'red'}
+    }
   }
 
   currentSquares() {
@@ -33,7 +37,7 @@ class Game extends React.Component {
         return;
     }
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    squares[i] = this.nextPlayer();
+    squares[i] = this.nextPlayer().sign;
     this.setState({
       history: history.concat([{
         squares: squares
