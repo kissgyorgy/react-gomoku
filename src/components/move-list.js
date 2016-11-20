@@ -7,11 +7,11 @@ function MoveList(props) {
     if (!move) {
       desc = 'Game start';
     } else if (move === props.history.length - 1 && props.winner) {
-      desc = 'Winner: ' + props.winner;
+      desc = 'Winner ' + props.winner + ': ' + step.position.toString();
     } else if (move === props.stepNumber) {
-      desc = <b>Move # {move} </b>;
+      desc = <b>Move {step.player}: {step.position.toString()} </b>;
     } else {
-      desc = 'Move #' + move;
+      desc = 'Move ' + step.player + ': ' + step.position.toString();
     }
 
     return (

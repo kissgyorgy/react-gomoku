@@ -7,6 +7,18 @@ import Status from './components/status';
 import ResetButton from './components/reset-button';
 
 
+class Position {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  toString() {
+    return `${this.x}, ${this.y}`;
+  }
+}
+
+
 class Game extends React.Component {
   constructor() {
     super();
@@ -30,9 +42,13 @@ class Game extends React.Component {
     }
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     squares[i] = this.state.nextPlayer;
+    const row = Math.floor(i / 3) + 1;
+    const column = (i % 3) + 1;
     this.setState({
       history: history.concat([{
-        squares: squares
+        squares: squares,
+        player: this.state.nextPlayer,
+        position: new Position(row, column),
       }]),
       nextPlayer: (this.state.nextPlayer === 'X') ? 'O' : 'X',
       stepNumber: history.length,
