@@ -4,6 +4,7 @@ import Board from './components/board';
 import Square from './components/square';
 import MoveList from './components/move-list';
 import Status from './components/status';
+import ResetButton from './components/reset-button';
 
 
 class Game extends React.Component {
@@ -15,6 +16,7 @@ class Game extends React.Component {
       }],
       xIsNext: true,
       stepNumber: 0,
+      confirmReset: false,
     };
   }
 
@@ -71,16 +73,13 @@ class Game extends React.Component {
   }
 
   resetGame() {
-    if (!confirm('Sure ?')) {
-      return;
-    }
-
     this.setState({
       history: [{
         squares: Array(9).fill(null),
       }],
       xIsNext: true,
       stepNumber: 0,
+      confirmReset: false,
     });
   }
 
@@ -90,7 +89,9 @@ class Game extends React.Component {
         <div className="game-board">
           <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
           <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
-          <button onClick={() => this.resetGame()}>Reset</button>
+          <ResetButton confirmReset={this.state.confirmReset}
+                       setConfirm={(value) => this.setState({ confirmReset: value })}
+                       onReset={() => this.resetGame()} />
         </div>
         <div className="game-info">
           <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />
