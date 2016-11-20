@@ -14,13 +14,9 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
-      xIsNext: true,
+      nextPlayer: 'X',
       stepNumber: 0,
     };
-  }
-
-  nextPlayer() {
-    return this.state.xIsNext ? 'X' : 'O';
   }
 
   currentSquares() {
@@ -33,12 +29,12 @@ class Game extends React.Component {
         return;
     }
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    squares[i] = this.nextPlayer();
+    squares[i] = this.state.nextPlayer;
     this.setState({
       history: history.concat([{
         squares: squares
       }]),
-      xIsNext: !this.state.xIsNext,
+      nextPlayer: (this.state.nextPlayer === 'X') ? 'O' : 'X',
       stepNumber: history.length,
     });
   }
@@ -67,7 +63,7 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) ? false : true,
+      nextPlayer: (step % 2) ? 'O' : 'X',
     });
   }
 
@@ -76,7 +72,7 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
-      xIsNext: true,
+      nextPlayer: 'X',
       stepNumber: 0,
     });
   }
@@ -85,7 +81,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
+          <Status winner={this.calculateWinner()} nextPlayer={this.state.nextPlayer} />
           <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
           <ResetButton onReset={() => this.resetGame()} />
         </div>
