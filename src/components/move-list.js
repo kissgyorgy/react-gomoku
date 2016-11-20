@@ -6,6 +6,8 @@ function MoveList(props) {
     let desc;
     if (!move) {
       desc = 'Game start';
+    } else if (move === props.history.length - 1 && props.winner) {
+      desc = 'Winner: ' + props.winner;
     } else if (move === props.stepNumber) {
       desc = <b>Move # {move} </b>;
     } else {
