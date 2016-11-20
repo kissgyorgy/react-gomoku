@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './components/board';
 import Square from './components/square';
+import MoveList from './components/move-list';
 
 
 class Game extends React.Component {
@@ -77,15 +78,6 @@ class Game extends React.Component {
       status = 'Next player: ' + this.nextPlayer();
     }
 
-    const moves = this.state.history.map((step, move) => {
-      const desc = move ? 'Move #' + move : 'Game start';
-      return (
-        <li key={move}>
-          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
-        </li>
-      );
-    });
-
     return (
       <div className="game">
         <div className="game-board">
@@ -93,7 +85,7 @@ class Game extends React.Component {
           <Board squares={this.current().squares} onClick={(i) => this.handleClick(i)} />
         </div>
         <div className="game-info">
-          <ol>{moves}</ol>
+          <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />
         </div>
       </div>
     );
