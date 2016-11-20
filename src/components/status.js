@@ -1,22 +1,12 @@
 import React from 'react';
+import Sign from './sign';
 
 
 function Status(props) {
   if (props.winner) {
-    return (
-      <div>
-        Winner: <span className={props.nextPlayer.color}>{props.winner}</span>
-      </div>
-    );
+    return <div> Winner: <Sign player={props.winner} /> </div>;
   } else {
-    return (
-      <div>
-        Next player:&nbsp;
-        <span className={props.nextPlayer.color}>
-          {props.nextPlayer.sign}
-        </span>
-      </div>
-    );
+    return <div> Next player: <Sign player={props.nextPlayer} /> </div>;
   }
 }
 

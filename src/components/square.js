@@ -1,11 +1,11 @@
 import React from 'react';
+import Sign from './sign';
 
 
 function Square(props) {
-  const color = (props.value === 'X') ? 'green' : 'red';
   return (
     <button className="square" onClick={() => props.onClick()}>
-      <span className={color}>{props.value}</span>
+      <Sign player={props.value} />
     </button>
   );
 }
