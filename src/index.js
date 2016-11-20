@@ -70,12 +70,27 @@ class Game extends React.Component {
     });
   }
 
+  resetGame() {
+    if (!confirm('Sure ?')) {
+      return;
+    }
+
+    this.setState({
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+      stepNumber: 0,
+    });
+  }
+
   render() {
     return (
       <div className="game">
         <div className="game-board">
           <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
           <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
+          <button onClick={() => this.resetGame()}>Reset</button>
         </div>
         <div className="game-info">
           <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />
