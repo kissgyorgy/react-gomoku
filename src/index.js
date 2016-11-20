@@ -16,7 +16,6 @@ class Game extends React.Component {
       }],
       xIsNext: true,
       stepNumber: 0,
-      confirmReset: false,
     };
   }
 
@@ -79,7 +78,6 @@ class Game extends React.Component {
       }],
       xIsNext: true,
       stepNumber: 0,
-      confirmReset: false,
     });
   }
 
@@ -89,9 +87,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
           <Board squares={this.currentSquares()} onClick={(i) => this.handleClick(i)} />
-          <ResetButton confirmReset={this.state.confirmReset}
-                       setConfirm={(value) => this.setState({ confirmReset: value })}
-                       onReset={() => this.resetGame()} />
+          <ResetButton onReset={() => this.resetGame()} />
         </div>
         <div className="game-info">
           <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />

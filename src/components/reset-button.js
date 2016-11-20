@@ -1,18 +1,37 @@
 import React from 'react';
 
 
-function ResetButton(props) {
-  if (!props.confirmReset)
-    return <button onClick={() => props.setConfirm(true)}>Reset</button>;
+class ResetButton extends React.Component {
 
-  return (
-    <div>
-      <button>Reset?</button>
-      <br />
-      <button onClick={() => props.onReset()}>Yes</button>
-      <button onClick={() => props.setConfirm(false)}>No</button>
-    </div>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      confirm: false,
+    };
+  }
+
+  handleReset(){
+    this.setState({ confirm: false });
+    this.props.onReset();
+  }
+
+  render() {
+    if (!this.state.confirm){
+      return (
+        <button onClick={() => this.setState({ confirm: true })}>
+          Reset
+        </button>
+      );
+    }
+
+    return (
+      <div>
+        <button>Reset?</button> <br />
+        <button onClick={() => this.handleReset()}>Yes</button>
+        <button onClick={() => this.setState({ confirm: false })}>No</button>
+      </div>
+    );
+  }
 }
 
 export default ResetButton;
