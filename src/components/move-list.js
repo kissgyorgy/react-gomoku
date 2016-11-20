@@ -3,7 +3,15 @@ import React from 'react';
 
 function MoveList(props) {
   const moves = props.history.map((step, move) => {
-    const desc = move ? 'Move #' + move : 'Game start';
+    let desc;
+    if (!move) {
+      desc = 'Game start';
+    } else if (move === props.stepNumber) {
+      desc = <b>Move # {move} </b>;
+    } else {
+      desc = 'Move #' + move;
+    }
+
     return (
       <li key={move}>
         <a href="#" onClick={() => props.onClick(move)}>{desc}</a>

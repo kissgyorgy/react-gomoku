@@ -90,7 +90,9 @@ class Game extends React.Component {
           <ResetButton onReset={() => this.resetGame()} />
         </div>
         <div className="game-info">
-          <MoveList history={this.state.history} onClick={(move) => this.jumpTo(move)} />
+          <MoveList history={this.state.history}
+                    onClick={(move) => this.jumpTo(move)}
+                    stepNumber={this.state.stepNumber} />
         </div>
       </div>
     );
