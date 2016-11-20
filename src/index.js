@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Board from './components/board';
 import Square from './components/square';
 import MoveList from './components/move-list';
+import Status from './components/status';
 
 
 class Game extends React.Component {
@@ -70,18 +71,10 @@ class Game extends React.Component {
   }
 
   render() {
-    const winner = this.calculateWinner();
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + this.nextPlayer();
-    }
-
     return (
       <div className="game">
         <div className="game-board">
-          <div>{status}</div>
+          <Status winner={this.calculateWinner()} nextPlayer={this.nextPlayer()} />
           <Board squares={this.current().squares} onClick={(i) => this.handleClick(i)} />
         </div>
         <div className="game-info">
