@@ -5,6 +5,7 @@ import Square from './components/square';
 import MoveList from './components/move-list';
 import Status from './components/status';
 import ResetButton from './components/reset-button';
+import Navigation from './components/navigation';
 
 
 class Position {
@@ -109,6 +110,9 @@ class Game extends React.Component {
                  squares={this.currentSquares()}
                  onClick={(i) => this.handleClick(i)} />
           <ResetButton onReset={() => this.resetGame()} />
+          <Navigation stepNumber={this.state.stepNumber}
+                      historyLength={history.length}
+                      onClick={i => this.jumpTo(i)} />
         </div>
         <div className="game-info">
           <MoveList history={this.state.history}
