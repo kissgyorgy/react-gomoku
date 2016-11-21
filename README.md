@@ -1,25 +1,17 @@
-# ReduxSimpleStarter
+# React Gomoku
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+Enchanced version of the [official React tutorial](https://facebook.github.io/react/tutorial/tutorial.html).
 
-###Getting Started###
+Enhancements:
+- Display move locations
+- Bold the currently-selected item in the move list
+- Rewritten Board to use two loops to make the squares instead of hardcoding them
+- Reset button with confirmation
+- Can go backward and forward in history
+- Show current Move with Bold
+- Colored signs
+- 20x20 board
+- Highlights winning squares on a 3x3 board (when `SIZE=3` in `board.js`)
 
-There are two methods for getting started with this repo.
-
-####Familiar with Git?#####
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
-```
-	> git clone git@github.com:StephenGrider/ReduxSimpleStarter.git
-	> cd ReduxSimpleStarter
-	> npm install
-	> npm start
-```
-
-####Not Familiar with Git?#####
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-	> npm install
-	> npm start
-```
+It looks like this:
+![Screenshot](screenshot.png)
