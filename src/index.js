@@ -5,6 +5,7 @@ import MoveList from './components/move-list';
 import Status from './components/status';
 import ResetButton from './components/reset-button';
 import Navigation from './components/navigation';
+import './style.css';
 
 
 class Position {
@@ -126,4 +127,4 @@ class Game extends React.Component {
 }
 
 
-ReactDOM.render(<Game />, document.querySelector('.container') );
+ReactDOM.render(<Game />, document.getElementById('root') );
