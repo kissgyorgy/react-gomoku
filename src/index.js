@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Board from './components/board';
+import Board, { SIZE as BOARD_SIZE } from './components/board';
 import Square from './components/square';
 import MoveList from './components/move-list';
 import Status from './components/status';
@@ -9,8 +9,8 @@ import ResetButton from './components/reset-button';
 
 class Position {
   constructor(i) {
-    this.row = Math.floor(i / 3) + 1;
-    this.col = (i % 3) + 1;
+    this.row = Math.floor(i / BOARD_SIZE) + 1;
+    this.col = (i % BOARD_SIZE) + 1;
   }
 
   toString() {
