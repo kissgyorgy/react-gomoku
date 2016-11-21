@@ -1,7 +1,17 @@
 import React from 'react';
-import Square from './square';
+import Sign from './sign';
 
 export const SIZE = 20;
+
+
+function Square(props) {
+  const className = props.isWinner ? "square winner" : "square";
+  return (
+    <button className={className} onClick={props.onClick}>
+      <Sign player={props.value} />
+    </button>
+  );
+}
 
 
 class Board extends React.Component {
