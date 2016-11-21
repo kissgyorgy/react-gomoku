@@ -30,6 +30,10 @@ class Game extends React.Component {
       nextPlayer: 'X',
       stepNumber: 0,
     };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.jumpTo = this.jumpTo.bind(this);
   }
 
   currentSquares() {
@@ -106,19 +110,16 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Status winner={winnerPlayer} nextPlayer={this.state.nextPlayer} />
-          <Board winnerLine={winnerLine}
-                 squares={this.currentSquares()}
-                 onClick={(i) => this.handleClick(i)} />
-          <ResetButton onReset={() => this.resetGame()} />
+          <Board winnerLine={winnerLine} squares={this.currentSquares()}
+                 onClick={this.handleClick} />
+          <ResetButton onReset={this.resetGame} />
           <Navigation stepNumber={this.state.stepNumber}
                       historyLength={history.length}
-                      onClick={i => this.jumpTo(i)} />
+                      onClick={this.jumpTo} />
         </div>
         <div className="game-info">
-          <MoveList history={this.state.history}
-                    winner={winnerPlayer}
-                    onClick={(move) => this.jumpTo(move)}
-                    stepNumber={this.state.stepNumber} />
+          <MoveList history={this.state.history} winner={winnerPlayer}
+                    onClick={this.jumpTo} stepNumber={this.state.stepNumber} />
         </div>
       </div>
     );

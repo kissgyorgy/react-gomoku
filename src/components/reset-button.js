@@ -8,6 +8,8 @@ class ResetButton extends React.Component {
     this.state = {
       confirm: false,
     };
+
+    this.handleReset = this.handleReset.bind(this)
   }
 
   handleReset(){
@@ -32,7 +34,7 @@ class ResetButton extends React.Component {
           Reset?
         </button>
         &nbsp;
-        <button className="btn btn-danger btn-sm" onClick={() => this.handleReset()}>
+        <button className="btn btn-danger btn-sm" onClick={this.handleReset}>
           Yes
         </button>
         &nbsp;
