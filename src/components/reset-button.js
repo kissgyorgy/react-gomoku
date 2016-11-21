@@ -18,7 +18,8 @@ class ResetButton extends React.Component {
   render() {
     if (!this.state.confirm){
       return (
-        <button className="pull-xs-left" onClick={() => this.setState({ confirm: true })}>
+        <button className="btn btn-warning btn-sm pull-xs-left"
+                onClick={() => this.setState({ confirm: true })}>
           Reset
         </button>
       );
@@ -26,9 +27,15 @@ class ResetButton extends React.Component {
 
     return (
       <div className="pull-xs-left">
-        <button>Reset?</button>
-        <button onClick={() => this.handleReset()}>Yes</button>
-        <button onClick={() => this.setState({ confirm: false })}>No</button>
+        <button className="btn btn-warning btn-sm">Reset?</button>&nbsp;
+        <button className="btn btn-danger btn-sm" onClick={() => this.handleReset()}>
+          Yes
+        </button>
+        &nbsp;
+        <button className="btn btn-success btn-sm"
+                onClick={() => this.setState({ confirm: false })}>
+          No
+        </button>
       </div>
     );
   }
