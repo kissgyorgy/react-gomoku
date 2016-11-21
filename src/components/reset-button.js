@@ -27,7 +27,11 @@ class ResetButton extends React.Component {
 
     return (
       <div className="pull-xs-left">
-        <button className="btn btn-warning btn-sm">Reset?</button>&nbsp;
+        <button className="btn btn-warning btn-sm"
+                onClick={() => this.setState({ confirm: false })}>
+          Reset?
+        </button>
+        &nbsp;
         <button className="btn btn-danger btn-sm" onClick={() => this.handleReset()}>
           Yes
         </button>
