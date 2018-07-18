@@ -5,6 +5,9 @@ pages:
     - npm install
     - npm run build
     - mv build public
+  environment:
+    name: production
+    url: https://react-gomoku.kissgyorgy.me
   artifacts:
     paths:
     - public
