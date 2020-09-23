@@ -7,7 +7,7 @@ pages:
     - mv build public
   environment:
     name: production
-    url: https://react-gomoku.kissgyorgy.me
+    url: https://kissgyorgy.me/react-gomoku/
   artifacts:
     paths:
-    - public
+      - public
