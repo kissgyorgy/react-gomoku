@@ -1,0 +1,13 @@
+pages:
+  stage: deploy
+  image: node:10.6.0-alpine
+  script:
+    - npm install
+    - npm run build
+    - mv build public
+  environment:
+    name: production
+    url: https://kissgyorgy.me/react-gomoku/
+  artifacts:
+    paths:
+      - public
