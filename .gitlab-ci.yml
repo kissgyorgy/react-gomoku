@@ -1,6 +1,6 @@
 pages:
   stage: deploy
-  image: node:10.6.0-alpine
+  image: node:23.10.0-alpine
   script:
     - npm install
     - npm run build
